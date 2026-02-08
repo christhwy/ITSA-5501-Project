@@ -5,3 +5,6 @@ It demonstrates Git version control, branching, and DevOps-style project organiz
 
 ## Project Purpose
 This project demonstrates DevOps workflows including Git branching, merging, and tagging.
+
+## Contribution Notes
+Always create a branch before making changes.
