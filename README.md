@@ -5,3 +5,8 @@ It demonstrates Git version control, branching, and DevOps-style project organiz
 
 ## Project Purpose
 This project demonstrates DevOps workflows including Git branching, merging, and tagging.
+
+## Repository Structure
+- docker/ : Docker-related files
+- k8s/    : Kubernetes YAML files
+- iac/    : Infrastructure-as-Code scripts
