@@ -1,0 +1,2 @@
+## Sample Workflow
+Develop features in a separate branch and merge via pull request.
