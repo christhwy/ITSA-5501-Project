@@ -179,7 +179,7 @@ Milestone 3 focuses on deploying the application using Kubernetes and automating
 
 ---
 
-### Key Commands
+#### Key Commands
 
 ```bash
 kubectl apply -f pvc.yaml
@@ -194,7 +194,7 @@ kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
 
 ---
 
-## Outcome (Kubernetes)
+#### Outcome (Kubernetes)
 
 - Successfully deployed multi-container pods  
 - Verified shared storage between containers  
@@ -203,15 +203,15 @@ kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
 
 ---
 
-## 🔹 Infrastructure as Code (Terraform + Azure)
+### 🔹 Infrastructure as Code (Terraform + Azure)
 
-### Objectives
+#### Objectives
 - Automate infrastructure provisioning  
 - Deploy cloud resources using Terraform  
 
 ---
 
-### Resources Created
+#### Resources Created
 - Resource Group  
 - Virtual Network  
 - Subnet  
@@ -221,7 +221,7 @@ kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
 
 ---
 
-### Configuration Details
+#### Configuration Details
 - Location: eastus2  
 - VM Size: Standard_D2as_v7  
 - OS: Ubuntu 22.04 LTS (Gen2)  
@@ -229,7 +229,7 @@ kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
 
 ---
 
-### Key Commands
+#### Key Commands
 ```bash
 terraform init
 terraform fmt
