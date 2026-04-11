@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      volumes:
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: my-pvc
+
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /usr/share/nginx/html
+
+        - name: sidecar-container
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - while true; do echo "Hello from sidecar" >> /data/log.txt; sleep 10; done;
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /data

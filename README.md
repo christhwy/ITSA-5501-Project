@@ -131,3 +131,63 @@ The application was deployed using Docker Compose.
 docker compose up -d
 docker compose ps
 docker compose up -d --scale frontend=3
+
+---
+
+## Milestone 3 – Kubernetes & Infrastructure as Code
+
+Milestone 3 focuses on deploying the application using Kubernetes and automating cloud infrastructure provisioning using Terraform on Microsoft Azure.
+
+---
+
+### 🔹 Kubernetes Implementation
+
+#### Objectives
+- Deploy application using Kubernetes
+- Configure persistent storage
+- Use multi-container pods
+- Scale and update deployments
+
+---
+
+### Components
+
+#### 1. PersistentVolumeClaim (PVC)
+- Storage: 500Mi
+- Access Mode: ReadWriteOnce
+- Used to enable persistent shared storage between containers
+
+#### 2. Deployment
+- Initial replicas: 2 → scaled to 5
+- Each pod contains:
+  - **nginx-container**
+    - Image: nginx:latest
+    - Serves web content on port 80
+    - Mounts shared volume at `/usr/share/nginx/html`
+  - **sidecar-container**
+    - Image: busybox
+    - Writes logs ("Hello from sidecar") every 10 seconds
+    - Mounts shared volume at `/data`
+
+#### 3. Shared Storage
+- Both containers use the same PVC-backed volume
+- Verified by reading the same log file from both containers
+
+#### 4. Service
+- Type: NodePort
+- Allows access to the application via browser using Minikube
+
+---
+
+### Key Commands
+
+```bash
+kubectl apply -f pvc.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl scale deployment nginx-deployment --replicas=5
+kubectl set image deployment/nginx-deployment nginx-container=nginx:1.21
+kubectl rollout status deployment/nginx-deployment
+
+kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
