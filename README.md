@@ -191,3 +191,48 @@ kubectl set image deployment/nginx-deployment nginx-container=nginx:1.21
 kubectl rollout status deployment/nginx-deployment
 
 kubectl exec -it <pod> -c sidecar-container -- cat /data/log.txt
+
+---
+
+## Outcome (Kubernetes)
+
+- Successfully deployed multi-container pods  
+- Verified shared storage between containers  
+- Scaled application to 5 replicas  
+- Performed rolling update of deployment  
+
+---
+
+## 🔹 Infrastructure as Code (Terraform + Azure)
+
+### Objectives
+- Automate infrastructure provisioning  
+- Deploy cloud resources using Terraform  
+
+---
+
+### Resources Created
+- Resource Group  
+- Virtual Network  
+- Subnet  
+- Network Interface  
+- Public IP Address  
+- Linux Virtual Machine  
+
+---
+
+### Configuration Details
+- Location: eastus2  
+- VM Size: Standard_D2as_v7  
+- OS: Ubuntu 22.04 LTS (Gen2)  
+- Authentication: SSH key  
+
+---
+
+### Key Commands
+```bash
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
